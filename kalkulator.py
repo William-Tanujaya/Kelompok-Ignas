@@ -1,19 +1,33 @@
-angka1 = float(input("Masukkan angka pertama: "))
-operator = input("Masukkan operator (+, -, *, /): ")
-angka2 = float(input("Masukkan angka kedua: "))
+print("Available operators: +, -, /, *")
+print("Input format: [number1] [operation] [number2]")
+print("Example: 2 + 2\n")
+
+num = input("Enter operation: ")
+
+num1, operator, num2 = num.split()
+
+num1 = float(num1)
+num2 = float(num2)
 
 if operator == "+":
-    hasil = angka1 + angka2
+    result = num1 + num2
 elif operator == "-":
-    hasil = angka1 - angka2
+    result = num1 - num2
 elif operator == "*":
-    hasil = angka1 * angka2
+    result = num1 * num2
 elif operator == "/":
-    if angka2 != 0:
-        hasil = angka1 / angka2
-    else:
-        hasil = "Error: tidak bisa dibagi 0"
+    if num2 == 0:
+        print("Error")
+        exit()
+    result = num1 / num2
 else:
-    hasil = "Operator tidak valid"
+    print("Invalid operator")
+    exit()
+    
+def formating(n):
+    n = round(n, 10)
+    if n.is_integer():
+        return int(n)
+    return n
 
-print("Hasil:", hasil)#please add your calculator function here
+print(f"{formating(num1)} {operator} {formating(num2)} = {formating(result)}")
